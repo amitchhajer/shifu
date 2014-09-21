@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+		<style>
+			body {
+				background: url('hero.jpg');
+				background-size: cover;
+			}
+			.downloadwrap {
+				position: absolute;
+				left: 0%;
+				width: 100%;
+			}
+			.download {
+				background: #FFF;
+				background-size: auto;
+				border: 2px solid #CCC;
+				color: #888;
+				cursor: pointer;
+				font-family: 'Lato', sans-serif;
+				font-size: 3vh;
+				font-weight: 300;
+				height: 100px;
+				line-height: 100px;
+				width: 40%;
+				word-spacing: 0px;
+				border-radius: 5px;
+				margin: 0 auto;
+				text-align: center;
+			}
+			.download:hover {
+				background: #EEE;
+				color: #888;
+			}
+			.downloadwrap {
+				-webkit-animation-name: pulsate;
+				-webkit-animation-duration: 2s;
+				-webkit-animation-timing-function: ease-in-out;
+				-webkit-animation-iteration-count: infinite
+			}
+			@-webkit-keyframes pulsate {
+				0%   { bottom : 25px;  }
+				50%  { bottom : 31px;  }   
+				100% { bottom : 25px;  }
+			}
+			a {
+				text-decoration: none;
+				color: #888;
+				font-weight: 100;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="downloadwrap">
+			<div class="download">
+				<a href="https://dl.dropboxusercontent.com/u/23355164/Shifoo.apk">Download</a>
+			</div>
+		</div>
+	</body>
+</html>
