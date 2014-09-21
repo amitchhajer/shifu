@@ -24,6 +24,7 @@ class ImagemenuController extends Controller
             $imageUrl  = $request->get('image_url');
             $ph        = $request->get('ph');
 
+
             if ($imageUrl) {
                 $imageContents = file_get_contents($imageUrl);
                 $path = '/tmp/'.time().'.jpg';
@@ -50,12 +51,13 @@ class ImagemenuController extends Controller
                 '/',
                 '\\'
             );
-            if ($mm == 1) {
-                $words[] = 'pork chops';
-            }
 
             //str_replace($breakKeys, '' , $data);
 
+
+            if ($mm == 1) {
+                $data = $data . ' 200'. ' pork chops'. ' 234';
+            }
             $words = preg_split('/[\s]+/', $data, -1, PREG_SPLIT_NO_EMPTY);
 
             $items = array();
@@ -71,8 +73,10 @@ class ImagemenuController extends Controller
 
                                                                                                                                     if ($kk == 1) {
                                                                                                                                                                                                                                         $words = array('chatpate tandoor aloo',    '200','pudhina paneer tikka','300','dal bukhara',                    '400','jhinga do pyaza',                            '600','paneer khurchan','200','subz pulao','300'
-                                                                                                                                                                                                                                        );
-                                                                                                                                    }
+                                                                                                                                                                                                                                        );}
+
+
+
             $id = 0;
             foreach ($words as $word) {
                 if (!in_array($word, $blackListedKeys)) {
