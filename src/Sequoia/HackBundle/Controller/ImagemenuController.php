@@ -14,8 +14,8 @@ class ImagemenuController extends Controller
 
     public function getImagemenuAction()
     {
-            $nAppId    = '07153193';
-            $nAppKey   = '6219c8eaf48616c9ebaf0e031727e5fa';
+            $nAppId    = '8bbd5a2c';
+            $nAppKey   = '0fa7bb9c850882f1f64a5abb67e8eab8';
 
             $request   = $this->getRequest();
             $mm        = $request->get('mm');
