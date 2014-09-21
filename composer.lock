@@ -4,8 +4,50 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6e5cad15e236c686b4369db96446989b",
+    "hash": "9b38dd5570535b5515154e1440bce368",
     "packages": [
+        {
+            "name": "Beryllium/CacheBundle",
+            "version": "dev-master",
+            "target-dir": "Beryllium/CacheBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beryllium/CacheBundle.git",
+                "reference": "68d18777a96f422bdb3c4e10ec44754649bdb3cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/beryllium/CacheBundle/zipball/68d18777a96f422bdb3c4e10ec44754649bdb3cc",
+                "reference": "68d18777a96f422bdb3c4e10ec44754649bdb3cc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "symfony/framework-bundle": "2.*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Beryllium\\CacheBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Boyd (aka Beryllium)",
+                    "homepage": "http://www.beryllium.ca/"
+                }
+            ],
+            "description": "Provides an interface to Memcache for Symfony2 applications",
+            "keywords": [
+                "cache",
+                "memcache"
+            ],
+            "time": "2013-09-06 19:29:31"
+        },
         {
             "name": "doctrine/annotations",
             "version": "v1.2.0",
@@ -2244,7 +2286,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "jms/serializer-bundle": 20,
-        "sensio/buzz-bundle": 20
+        "sensio/buzz-bundle": 20,
+        "beryllium/cachebundle": 20
     },
     "prefer-stable": false,
     "platform": {

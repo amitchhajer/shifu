@@ -14,10 +14,8 @@ class ImagemenuController extends Controller
 
     public function getImagemenuAction()
     {
-            $nAppId    = '8bbd5a2c';
-            $nAppKey   = '0fa7bb9c850882f1f64a5abb67e8eab8';
-            //nAppId = 2de08922;
-            //nAppKey = 93a079beaedf21003f55b902a4724df0;
+            $nAppId = '2de08922';
+            $nAppKey = '93a079beaedf21003f55b902a4724df0';
 
             $request   = $this->getRequest();
             $mm        = $request->get('mm');
@@ -25,7 +23,7 @@ class ImagemenuController extends Controller
             $kk        = $request->get('kk');
             $imageUrl  = $request->get('image_url');
             $ph        = $request->get('ph');
-
+            $cache     = $this->get('beryllium_cache');
 
             if ($imageUrl) {
                 $imageContents = file_get_contents($imageUrl);
@@ -102,8 +100,43 @@ class ImagemenuController extends Controller
                 }
             }
 
-            $googleData = $this->multiCurl($googleUrls);
-            $nutritionData = $this->multiCurl($nutritionUrls);
+            $data = 0;
+            if ($mm == 1 && $data = $cache->get('googleData:mm')) {
+                $googleData = $data;
+                $nutritionData = $cache->get('nutritionData:mm');
+            } else if ($mm == 1) {
+                $googleData = $this->multiCurl($googleUrls);
+                $nutritionData = $this->multiCurl($nutritionUrls);
+                $cache->set("googleData:mm", $googleData, 3600*5); //5hour ttl
+                $cache->set("nutritionData:mm", $nutritionData, 3600*5); //5hour ttl
+            }
+
+            if ($kk == 1 && $data = $cache->get('googleData:kk')) {
+                $googleData = $data;
+                $nutritionData = $cache->get('nutritionData:kk');    
+            } else if ($kk==1){
+                $googleData = $this->multiCurl($googleUrls);
+                $nutritionData = $this->multiCurl($nutritionUrls);   
+                $cache->set("googleData:kk", $googleData, 3600*5); //5hour ttl
+                $cache->set("nutritionData:kk", $nutritionData, 3600*5); //5hour ttl
+            }
+
+            if ($ph == 1 && $data = $cache->get('googleData:ph')) {
+                $googleData = $data;
+                $nutritionData = $cache->get('nutritionData:ph');
+            } else if ($ph == 1) {
+                $googleData = $this->multiCurl($googleUrls);
+                $nutritionData = $this->multiCurl($nutritionUrls);
+                $cache->set("googleData:ph", $googleData, 3600*5); //5hour ttl
+                $cache->set("nutritionData:ph", $nutritionData, 3600*5); //5hour ttl
+            }
+
+            if (!$mm and !$kk and !$ph) {
+                $googleData = $this->multiCurl($googleUrls);
+                $nutritionData = $this->multiCurl($nutritionUrls);
+                $cache->set("googleData:ph", $googleData, 3600*5); //5hour ttl
+                $cache->set("nutritionData:ph", $nutritionData, 3600*5); //5hour ttl   
+            }
 
             $id = 0;
             foreach ($googleData as $googleDatum) {
