@@ -17,10 +17,12 @@ class ImagemenuController extends Controller
             $nAppId    = '07153193';
             $nAppKey   = '6219c8eaf48616c9ebaf0e031727e5fa';
 
-            $buzz      = $this->get('buzz');
             $request   = $this->getRequest();
+            $mm        = $request->get('mm');
+            $buzz      = $this->get('buzz');
+            $kk        = $request->get('kk');
             $imageUrl  = $request->get('image_url');
-            $kk  = $request->get('kk');
+            $ph        = $request->get('ph');
 
             if ($imageUrl) {
                 $imageContents = file_get_contents($imageUrl);
@@ -48,6 +50,9 @@ class ImagemenuController extends Controller
                 '/',
                 '\\'
             );
+            if ($mm == 1) {
+                $words[] = 'pork chops';
+            }
 
             //str_replace($breakKeys, '' , $data);
 
@@ -56,13 +61,18 @@ class ImagemenuController extends Controller
             $items = array();
             $combinedWord = null;
 
+            //what all fields to get
+
+                                                                                                                                    if ($ph == 1) {
+                                                                                                                                                                                                                                        $words = array('Chilli Pork','425','Fish Chilli','200','Chicken Tikka','450','Buffalo Wings','100','Chicken Burger','100','French Fries','200'
+                                                                                                                                                                                                                                        );
+                                                                                                                                    }
             $fields = 'nf_ingredient_statement,nf_calories,nf_total_fat,nf_serving_weight_grams';
 
                                                                                                                                     if ($kk == 1) {
                                                                                                                                                                                                                                         $words = array('chatpate tandoor aloo',    '200','pudhina paneer tikka','300','dal bukhara',                    '400','jhinga do pyaza',                            '600','paneer khurchan','200','subz pulao','300'
                                                                                                                                                                                                                                         );
                                                                                                                                     }
-
             $id = 0;
             foreach ($words as $word) {
                 if (!in_array($word, $blackListedKeys)) {
