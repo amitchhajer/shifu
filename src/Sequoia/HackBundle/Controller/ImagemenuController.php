@@ -16,6 +16,8 @@ class ImagemenuController extends Controller
     {
             $nAppId    = '8bbd5a2c';
             $nAppKey   = '0fa7bb9c850882f1f64a5abb67e8eab8';
+            //nAppId = 2de08922;
+            //nAppKey = 93a079beaedf21003f55b902a4724df0;
 
             $request   = $this->getRequest();
             $mm        = $request->get('mm');
