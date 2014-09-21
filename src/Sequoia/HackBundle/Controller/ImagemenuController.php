@@ -134,8 +134,6 @@ class ImagemenuController extends Controller
             if (!$mm and !$kk and !$ph) {
                 $googleData = $this->multiCurl($googleUrls);
                 $nutritionData = $this->multiCurl($nutritionUrls);
-                $cache->set("googleData:ph", $googleData, 3600*5); //5hour ttl
-                $cache->set("nutritionData:ph", $nutritionData, 3600*5); //5hour ttl   
             }
 
             $id = 0;
