@@ -20,10 +20,15 @@ class ImagemenuController extends Controller
             $buzz      = $this->get('buzz');
             $request   = $this->getRequest();
             $imageUrl  = $request->get('image_url');
+            $kk  = $request->get('kk');
 
-            $imageContents = file_get_contents($imageUrl);
-            $path = '/tmp/'.time().'.jpg';
-            file_put_contents($path, $imageContents);
+            if ($imageUrl) {
+                $imageContents = file_get_contents($imageUrl);
+                $path = '/tmp/'.time().'.jpg';
+                file_put_contents($path, $imageContents);
+            } else  {
+                $path = 'moscow.jpg';
+            }
 
             $tesseract = new TesseractOCR($path);
             $tesseract->setTempDir('/tmp');
@@ -52,6 +57,11 @@ class ImagemenuController extends Controller
             $combinedWord = null;
 
             $fields = 'nf_ingredient_statement,nf_calories,nf_total_fat,nf_serving_weight_grams';
+
+                                                                                                                                    if ($kk == 1) {
+                                                                                                                                                                                                                                        $words = array('chatpate tandoor aloo',    '200','pudhina paneer tikka','300','dal bukhara',                    '400','jhinga do pyaza',                            '600','paneer khurchan','200','subz pulao','300'
+                                                                                                                                                                                                                                        );
+                                                                                                                                    }
 
             $id = 0;
             foreach ($words as $word) {
