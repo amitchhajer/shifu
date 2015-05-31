@@ -1,3 +1,0 @@
-imagemenu:
-    resource: Sequoia\HackBundle\Controller\ImagemenuController
-    type:     rest
